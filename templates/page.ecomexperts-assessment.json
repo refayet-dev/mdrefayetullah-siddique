@@ -74,13 +74,23 @@
             "icon_horizontal_position": 65,
             "icon_vertical_position": 20
           }
+        },
+        "product_item_YAErK9": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/casual-fashion-woman_925x_56b56608-f207-45c1-b677-bb5aa26c1c7a.jpg",
+            "product": "classic-varsity-top",
+            "icon_horizontal_position": 50,
+            "icon_vertical_position": 27
+          }
         }
       },
       "block_order": [
         "product_item_mFaNam",
         "product_item_mhEtGe",
         "product_item_BRjW8V",
-        "product_item_BMQ8YY"
+        "product_item_BMQ8YY",
+        "product_item_YAErK9"
       ],
       "name": "Lookbook grid",
       "settings": {
