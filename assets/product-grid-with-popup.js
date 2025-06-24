@@ -1,3 +1,4 @@
+// click the + button to open the modal
 function openQuickViewModal(productHandle, bonusProductHandle) {
   const modal = document.querySelector("lookbook-grid-modal");
   fetch(
@@ -25,7 +26,7 @@ function openQuickViewModal(productHandle, bonusProductHandle) {
       initLookbookVariantPicker();
     });
 }
-
+// Close the modal
 function closeQuickViewModal() {
   let lookbookGridModal = document.querySelector("lookbook-grid-modal");
   lookbookGridModal.classList.remove("is-open");
@@ -34,6 +35,7 @@ function closeQuickViewModal() {
 }
 closeQuickViewModal();
 
+// Initialize variant picker to change the variant id when user select the color or size
 function initLookbookVariantPicker() {
   document.querySelectorAll("lookbook-grid-modal").forEach(function (modal) {
     const form = modal.querySelector("form");
@@ -49,18 +51,6 @@ function initLookbookVariantPicker() {
     if (!variantsJson) return;
 
     const variants = JSON.parse(variantsJson.textContent);
-    const optionNames = variants[0].option_names || [
-      "Option1",
-      "Option2",
-      "Option3",
-    ];
-
-    const colorIndex = optionNames.findIndex(
-      (name) => name.toLowerCase() === "color"
-    );
-    const sizeIndex = optionNames.findIndex(
-      (name) => name.toLowerCase() === "size"
-    );
 
     let selectedOptions = new Array(variants[0].options.length).fill("");
 
@@ -143,7 +133,7 @@ function initLookbookVariantPicker() {
         const sizeVal = selectedOptions[0];
         const colorVal = selectedOptions[1];
 
-        // Get bonus variants when needed
+        // Get bonus variants when match the condition
         if (colorVal === "Black" && sizeVal === "M") {
           const bonusVariants = await getBonusVariants();
 
