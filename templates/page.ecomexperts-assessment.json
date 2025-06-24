@@ -56,11 +56,31 @@
             "icon_horizontal_position": 73,
             "icon_vertical_position": 52
           }
+        },
+        "product_item_BRjW8V": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/red-plaid-shirt_925x_70e9e5a8-8fc5-4d60-9a9a-cc2e0dd57cc9.jpg",
+            "product": "chequered-red-shirt",
+            "icon_horizontal_position": 59,
+            "icon_vertical_position": 20
+          }
+        },
+        "product_item_BMQ8YY": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/leather-jacket-and-tea_925x_2490cde1-7e61-4151-9a65-de8a763bc701.jpg",
+            "product": "classic-leather-jacket",
+            "icon_horizontal_position": 65,
+            "icon_vertical_position": 20
+          }
         }
       },
       "block_order": [
         "product_item_mFaNam",
-        "product_item_mhEtGe"
+        "product_item_mhEtGe",
+        "product_item_BRjW8V",
+        "product_item_BMQ8YY"
       ],
       "name": "Lookbook grid",
       "settings": {
