@@ -63,7 +63,6 @@ function initLookbookVariantPicker() {
         btn.classList.add("active");
         const optionIndex = parseInt(btn.dataset.optionIndex);
         const optionValue = btn.dataset.optionValue;
-        console.log(optionValue);
         selectedOptions[optionIndex] = optionValue;
         updateVariantId();
       });
@@ -74,7 +73,6 @@ function initLookbookVariantPicker() {
       select.addEventListener("change", function () {
         const optionIndex = parseInt(select.dataset.optionIndex);
         const optionValue = select.value;
-        console.log(optionValue);
         selectedOptions[optionIndex] = optionValue;
         updateVariantId();
       });
