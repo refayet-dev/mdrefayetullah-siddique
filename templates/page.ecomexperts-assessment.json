@@ -105,8 +105,8 @@
       "name": "Lookbook grid",
       "settings": {
         "title": "TISSO VISON in the wild",
-        "bonus_product": "",
-        "padding_top": 44,
+        "bonus_product": "dark-winter-jacket",
+        "padding_top": 54,
         "padding_bottom": 50
       }
     }
