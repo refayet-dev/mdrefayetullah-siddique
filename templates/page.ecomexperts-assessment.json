@@ -16,9 +16,64 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "gift_guide_banner_component_ULk9Jk": {
+      "type": "gift-guide-banner-component",
+      "name": "Gift Guide Banner Widget",
+      "settings": {
+        "show_top_bar": true,
+        "top_bar_logo": "shopify://shop_images/Top_Bar_Logo.svg",
+        "top_bar_text": "Find the ideal gift for your loved ones.",
+        "top_bar_button_text": "CHOOSE GIFT",
+        "top_bar_button_link": "/collections/all",
+        "image": "shopify://shop_images/banner_image.svg",
+        "heading": "The Gift Guide",
+        "subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "banner_button_text": "SHOP NOW",
+        "banner_button_link": "/collections/all",
+        "bottom_heading": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "product_grid_with_popup_9DxGyB": {
+      "type": "product-grid-with-popup",
+      "blocks": {
+        "product_item_mFaNam": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/black-bag-over-the-shoulder_925x_4cae5708-5e9e-4e7e-96ec-9649f0c20cd8.jpg",
+            "product": "black-leather-bag",
+            "icon_horizontal_position": 58,
+            "icon_vertical_position": 60
+          }
+        },
+        "product_item_mhEtGe": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/man-adjusts-blue-tuxedo-bowtie_925x_55a49e12-d54b-488e-b7a0-ea4c201eb01f.jpg",
+            "product": "blue-silk-tuxedo",
+            "icon_horizontal_position": 73,
+            "icon_vertical_position": 52
+          }
+        }
+      },
+      "block_order": [
+        "product_item_mFaNam",
+        "product_item_mhEtGe"
+      ],
+      "name": "Lookbook grid",
+      "settings": {
+        "title": "TISSO VISON in the wild",
+        "bonus_product": "",
+        "padding_top": 44,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "gift_guide_banner_component_ULk9Jk",
+    "product_grid_with_popup_9DxGyB"
   ]
 }
