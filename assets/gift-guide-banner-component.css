@@ -1,0 +1,320 @@
+.gift-guide-banner__announcement-bar {
+  background-color: #f5f5f5;
+  padding: 26px 50px;
+  z-index: 2;
+  position: relative;
+  @media screen and (max-width: 989px) {
+    padding: 23px 3.2rem;
+  }
+}
+
+.gift-guide-banner__announcement-bar-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (max-width: 1920px) {
+    justify-content: space-between;
+  }
+  .gift-guide-banner__announcement-bar-hamburger {
+    display: none;
+    @media screen and (max-width: 989px) {
+      display: block;
+      .close {
+        display: none;
+      }
+    }
+  }
+  .gift-guide-banner__top-bar-logo {
+    max-height: 50px;
+    max-width: 405px;
+    @media screen and (max-width: 1920px) {
+      max-width: 150px;
+    }
+    @media screen and (max-width: 989px) {
+      max-height: 19px;
+    }
+  }
+  .gift-guide-banner__announcement-bar-message {
+    color: #000;
+    text-align: center;
+    font-size: 42.667px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    @media screen and (max-width: 1920px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 989px) {
+      display: none;
+    }
+  }
+  .gift-guide-banner__button {
+    background: #fff544;
+    background: linear-gradient(to left, #fff544 50%, #000 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 40px;
+    padding: 32px 2.5vw;
+    transition: all 0.5s ease;
+    @media screen and (max-width: 1920px) {
+      padding: 16px 2.5vw;
+      svg {
+        width: 24px;
+      }
+    }
+    @media screen and (max-width: 989px) {
+      opacity: 0;
+      width: 0;
+      padding: 0;
+      height: 0;
+      pointer-events: none;
+    }
+    span {
+      color: #000;
+      text-align: center;
+      font-size: 42.667px;
+      font-style: normal;
+      font-weight: 400;
+      text-transform: uppercase;
+      @media screen and (max-width: 1920px) {
+        font-size: 16px;
+      }
+    }
+    svg path {
+      transition: all 0.5s ease;
+    }
+  }
+  .gift-guide-banner__button:hover {
+    background-position: left top;
+    span {
+      color: #fff;
+    }
+    svg path {
+      fill: #fff;
+    }
+  }
+}
+
+.gift-guide-banner__mobile_content {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  position: relative;
+  @media screen and (max-width: 989px) {
+    display: flex;
+    height: 0;
+    transform: translateY(-200%);
+    transition: all 0.3s ease-in-out;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #f2f2f2;
+    .gift-guide-banner__mobile_content-message {
+      color: #000;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0;
+    }
+    .gift-guide-banner__mobile_content-button {
+      background: #fff544;
+      background: linear-gradient(to left, #fff544 50%, #000 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      gap: 40px;
+      padding: 11px 2.5vw;
+      transition: all 0.5s ease;
+      span {
+        color: #000;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+      svg path {
+        transition: all 0.5s ease;
+      }
+    }
+    .gift-guide-banner__mobile_content-button:hover {
+      background-position: left top;
+      span {
+        color: #fff;
+      }
+      svg path {
+        fill: #fff;
+      }
+    }
+  }
+}
+.gift-guide-banner__mobile_content.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  height: auto;
+  padding: 25px;
+}
+.gift-guide-banner__announcement-bar:has(
+    + .gift-guide-banner__mobile_content.active
+  ) {
+  background: #f7f7f7;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.gift-guide-banner__main-banner {
+  position: relative;
+  @media screen and (max-width: 989px) {
+    padding-top: 160px;
+  }
+}
+.gift-guide-banner__main-banner:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #f5f5f5;
+}
+
+.gift-guide-banner__main-banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.gift-guide-banner__main-banner-content {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  transform: translate(40%, -25%);
+  background: none;
+  padding: 20px;
+  max-width: 1140px;
+  @media screen and (max-width: 2000px) {
+    max-width: 505px;
+    transform: translate(6%, -5%);
+  }
+  @media screen and (max-width: 989px) {
+    max-width: 100%;
+    width: 100%;
+    transform: translate(-50%, 0%);
+    top: 0;
+    left: 50%;
+    text-align: center;
+    padding: 40px 20px;
+  }
+}
+
+.gift-guide-banner__main-banner-heading {
+  margin: 0 0 110px 0;
+  color: #000;
+  font-size: 164.783px;
+  font-weight: 500;
+  @media screen and (max-width: 2000px) {
+    font-size: 70px;
+    margin: 0 0 50px 0;
+  }
+  @media screen and (max-width: 989px) {
+    font-size: 30px;
+    margin: 0 0 24px 0;
+  }
+}
+
+.gift-guide-banner__main-banner-subheading {
+  margin: 0 0 110px 0;
+  color: #000;
+  font-size: 47.081px;
+  font-weight: 400;
+  @media screen and (max-width: 2000px) {
+    font-size: 20px;
+    margin: 0 0 50px 0;
+  }
+  @media screen and (max-width: 989px) {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.gift-guide-banner__main-banner-button {
+  background: linear-gradient(to left, #000 50%, #fff544 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 40px;
+  padding: 32px 2.5vw;
+  transition: all 0.5s ease;
+  max-width: fit-content;
+  @media screen and (max-width: 2000px) {
+    padding: 16px 2.5vw;
+    svg {
+      width: 25px;
+    }
+  }
+  @media screen and (max-width: 989px) {
+    padding: 13px 20px;
+    left: 50%;
+    position: absolute;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+  }
+  span {
+    color: #fff;
+    text-align: center;
+    font-size: 37.665px;
+    font-weight: 400;
+    text-transform: uppercase;
+    @media screen and (max-width: 2000px) {
+      font-size: 16px;
+    }
+  }
+  svg path {
+    transition: all 0.5s ease;
+    fill: #fff;
+  }
+}
+.gift-guide-banner__main-banner-button:hover {
+  background-position: left top;
+  span {
+    color: #000;
+  }
+  svg path {
+    fill: #000;
+  }
+}
+
+.gift-guide-banner__bottom-heading {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px 10px;
+  p {
+    color: #000;
+    font-size: 42.667px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    @media screen and (max-width: 2000px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 989px) {
+      font-size: 14px;
+    }
+  }
+}

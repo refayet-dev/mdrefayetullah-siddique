@@ -1,0 +1,120 @@
+<lookbook-grid-modal>
+  <div class="lookbook-grid-popup__modal-overlay" onclick="closeQuickViewModal()"></div>
+  <div class="lookbook-grid-popup__modal-content">
+    <button class="lookbook-grid-popup__modal-close-btn" aria-label="Close" onclick="closeQuickViewModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M5.03809 4.94354L13.5234 13.4288" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+        <path d="M5.03809 13.4285L13.5234 4.94325" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lookbook-grid-popup__modal-body">
+      <div class="lookbook-grid-popup__product-wrapper">
+        <div class="lookbook-grid-popup__product-image">
+          <img
+            src="{{ product.featured_image | image_url: width: 500 }}"
+            alt="{{ product.title }}"
+            width="100%"
+            height="100%"
+            loading="lazy"
+          >
+        </div>
+        <div class="lookbook-grid-popup__product-info">
+          <h2 class="lookbook-grid-popup__product-title">{{ product.title }}</h2>
+          <div class="product__price">
+            <div class="price price--large">
+              <div class="price__container">
+                <div class="price__regular">
+                  <span class="visually-hidden">Regular price</span>
+                  <span class="price-item price-item--regular">{{ product.price | money_with_currency }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lookbook-grid-popup__product-description">{{ product.description }}</div>
+        </div>
+      </div>
+      <product-form class="product-form" data-product-id="{{ product.id }}" data-hide-errors="false">
+        <form
+          method="post"
+          action="{{ routes.cart_add_url }} "
+          id="lookbook-grid-popup-form"
+          accept-charset="UTF-8"
+          class="form"
+          enctype="multipart/form-data"
+          novalidate="novalidate"
+          data-type="add-to-cart-form"
+        >
+          <input type="hidden" name="form_type" value="product">
+          <input type="hidden" name="utf8" value="✓">
+
+          {% comment %} First pass: find color option index {% endcomment %}
+          {% assign color_option_index = -1 %}
+          {% for option in product.options_with_values %}
+            {% if option.name == 'Color' %}
+              {% assign color_option_index = forloop.index0 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% comment %} Show Color option first if it exists {% endcomment %}
+          {% if color_option_index >= 0 %}
+            {% assign color_option = product.options_with_values[color_option_index] %}
+            <div class="product-option">
+              <span class="product-option__label">{{ color_option.name }}</span>
+              <div class="color-options">
+                {% for value in color_option.values %}
+                  <span class="color-background" style="background-color: {{ value }};"></span>
+                  <button
+                    type="button"
+                    class="color-swatch"
+                    data-option-index="{{ color_option_index }}"
+                    data-option-value="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% comment %} Show all other options with their original indices {% endcomment %}
+          {% for option in product.options_with_values %}
+            {% unless option.name == 'Color' %}
+              <div class="product-option">
+                <span class="product-option__label">{{ option.name }}</span>
+                {% if option.name == 'Size' %}
+                  <select name="id" class="size-select" data-option-index="{{ forloop.index0 }}">
+                    <option value="">Choose your size</option>
+                    {% for value in option.values %}
+                      <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                {% else %}
+                  <select data-option-index="{{ forloop.index0 }}">
+                    <option value="">Choose {{ option.name | downcase }}</option>
+                    {% for value in option.values %}
+                      <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                {% endif %}
+              </div>
+            {% endunless %}
+          {% endfor %}
+          <input type="hidden" name="id" value="{{ product.variants[0].id }}" class="product-variant-id">
+          <button
+            type="submit"
+            name="add"
+            class="lookbook-grid-popup__add-to-cart-btn button button--full-width"
+            aria-haspopup="dialog"
+          >
+            <span class="product-form__submit-text">Add to Cart</span>
+            <span class="sold-out-message hidden">Sold Out</span>
+          </button>
+        </form>
+      </product-form>
+    </div>
+  </div>
+  <script type="application/json" id="LookbookProductVariants-{{ product.id }}">
+    {{ product.variants | json }}
+  </script>
+</lookbook-grid-modal>

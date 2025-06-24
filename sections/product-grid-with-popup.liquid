@@ -1,0 +1,152 @@
+{{ 'component-product-grid-with-popup.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-grid-with-popup.js' | asset_url }}" defer="defer"></script>
+{% style %}
+  #lookbook-grid-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section
+  id="lookbook-grid-{{ section.id }}"
+  class="lookbook-grid-section"
+  data-section-id="{{ section.id }}"
+  {% if section.settings.bonus_product != blank %}
+    data-bonus-product-handle="{{ section.settings.bonus_product.handle }}"
+  {% endif %}
+>
+  <div class="page-width">
+    <h2 class="lookbook-grid-section__title">{{ section.settings.title | escape }}</h2>
+    <div class="lookbook-grid-section__grid">
+      {% for block in section.blocks %}
+        <div class="lookbook-grid-section__item">
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: 500
+              | image_tag: loading: 'lazy', alt: block.settings.image.alt
+              | escape
+            }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% if block.settings.product != blank %}
+            <button
+              class="lookbook-grid-section__plus-btn"
+              style="top: {{ block.settings.icon_vertical_position }}%; left: {{ block.settings.icon_horizontal_position }}%;"
+              data-product-handle="{{ block.settings.product.handle }}"
+              aria-haspopup="dialog"
+              onclick="openQuickViewModal('{{ block.settings.product.handle }}', '{{ section.settings.bonus_product.handle }}')"
+            >
+              +
+            </button>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lookbook grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "TISSO VISON in the wild",
+      "info": "The heading to display in the section"
+    },
+    {
+      "type": "header",
+      "content": "Bonus Product on Add to Cart"
+    },
+    {
+      "type": "product",
+      "id": "bonus_product",
+      "label": "Bonus Product",
+      "info": "This product will be added to the cart automatically when a product with variants 'Black' and 'Medium' is added."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 44,
+      "info": "The padding top to display in the section"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50,
+      "info": "The padding bottom to display in the section"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "The image to display for the product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Select the product"
+        },
+        {
+          "type": "range",
+          "id": "icon_horizontal_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Icon Horizontal Position",
+          "default": 50,
+          "info": "The horizontal position of the icon"
+        },
+        {
+          "type": "range",
+          "id": "icon_vertical_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Icon Vertical Position",
+          "default": 50,
+          "info": "The vertical position of the icon"
+        }
+      ],
+      "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook grid",
+      "settings": {
+        "title": "TISSO VISON in the wild",
+        "padding_top": 44,
+        "padding_bottom": 50
+      }
+    }
+  ]
+}
+{% endschema %}

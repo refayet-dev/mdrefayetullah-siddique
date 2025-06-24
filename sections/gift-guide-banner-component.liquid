@@ -1,0 +1,310 @@
+{{ 'gift-guide-banner-component.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #section-gift-banner-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section id="section-gift-banner-{{ section.id }}" class="gift-guide-banner--container">
+  {% if section.settings.show_top_bar %}
+    <div class="gift-guide-banner__announcement-bar" aria-label="{{ 'sections.header.announcement' | t }}">
+      <div class="gift-guide-banner__announcement-bar-content">
+        <span class="gift-guide-banner__announcement-bar-hamburger">
+          <svg
+            class="hamburger"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="13"
+            viewBox="0 0 20 13"
+            fill="none"
+          >
+            <path
+              d="M1 6.5H19"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path
+              d="M1 1.5H19"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path
+              d="M1 11.5H19"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <svg
+            class="close"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+          >
+            <path
+              d="M1 13.9997L13.7279 1.27177"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path
+              d="M1 1.00031L13.7279 13.7282"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        {% if section.settings.top_bar_logo != blank %}
+          {{
+            section.settings.top_bar_logo
+            | image_url: width: 1024
+            | image_tag: loading: 'lazy', class: 'gift-guide-banner__top-bar-logo', alt: section.settings.top_bar_logo
+            | escape
+          }}
+        {% endif %}
+        <p class="gift-guide-banner__announcement-bar-message">
+          {{ section.settings.top_bar_text | escape }}
+        </p>
+        {% if section.settings.top_bar_button_text != blank %}
+          <a href="{{ section.settings.top_bar_button_link }}" class="gift-guide-banner__button">
+            <span>{{ section.settings.top_bar_button_text | escape }}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="69"
+              height="30"
+              viewBox="0 0 69 30"
+              fill="none"
+            >
+              <path d="M2.75879 13.1458L0.758789 13.1458L0.758789 17.1458L2.75879 17.1458L2.75879 13.1458ZM68.173 16.56C68.9541 15.779 68.9541 14.5127 68.173 13.7316L55.4451 1.00368C54.664 0.222633 53.3977 0.222633 52.6167 1.00368C51.8356 1.78473 51.8356 3.05106 52.6167 3.83211L63.9304 15.1458L52.6167 26.4595C51.8356 27.2406 51.8356 28.5069 52.6167 29.288C53.3977 30.069 54.664 30.069 55.4451 29.288L68.173 16.56ZM2.75879 15.1458L2.75879 17.1458L66.7588 17.1458L66.7588 15.1458L66.7588 13.1458L2.75879 13.1458L2.75879 15.1458Z" fill="black" />
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="gift-guide-banner__mobile_content">
+    <p class="gift-guide-banner__mobile_content-message">
+      {{ section.settings.top_bar_text | escape }}
+    </p>
+    {% if section.settings.top_bar_button_text != blank %}
+      <a href="{{ section.settings.top_bar_button_link }}" class="gift-guide-banner__mobile_content-button">
+        <span>{{ section.settings.top_bar_button_text | escape }}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="31"
+          height="12"
+          viewBox="0 0 31 12"
+          fill="none"
+        >
+          <path d="M1.36377 4.80469L0.61377 4.80469L0.613769 6.30469L1.36377 6.30469L1.36377 4.80469ZM30.184 6.08502C30.4768 5.79213 30.4768 5.31725 30.184 5.02436L25.411 0.251388C25.1181 -0.041505 24.6432 -0.041505 24.3503 0.251388C24.0574 0.544281 24.0574 1.01916 24.3503 1.31205L28.593 5.55469L24.3503 9.79733C24.0574 10.0902 24.0574 10.5651 24.3503 10.858C24.6432 11.1509 25.1181 11.1509 25.411 10.858L30.184 6.08502ZM1.36377 5.55469L1.36377 6.30469L29.6536 6.30469L29.6536 5.55469L29.6536 4.80469L1.36377 4.80469L1.36377 5.55469Z" fill="black" />
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+  <div class="gift-guide-banner__main-banner">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1500
+        | image_tag: loading: 'lazy', alt: section.settings.image.alt
+        | escape
+      }}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    <div class="gift-guide-banner__main-banner-content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="gift-guide-banner__main-banner-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="gift-guide-banner__main-banner-subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      {%- if section.settings.banner_button_text != blank -%}
+        <a href="{{ section.settings.banner_button_link }}" class="gift-guide-banner__main-banner-button">
+          <span>{{ section.settings.banner_button_text }}</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="27"
+            viewBox="0 0 64 27"
+            fill="none"
+          >
+            <path d="M1.80273 11.8199L0.0372066 11.8199L0.0372062 15.351L1.80273 15.351L1.80273 11.8199ZM63.0962 14.8339C63.7856 14.1444 63.7856 13.0265 63.0962 12.337L51.8604 1.10128C51.1709 0.411803 50.0531 0.411803 49.3636 1.10128C48.6741 1.79077 48.6741 2.90864 49.3636 3.59812L59.3509 13.5855L49.3636 23.5728C48.6741 24.2623 48.6741 25.3801 49.3636 26.0696C50.0531 26.7591 51.1709 26.7591 51.8604 26.0696L63.0962 14.8339ZM1.80273 13.5854L1.80273 15.351L61.8477 15.351L61.8477 13.5855L61.8477 11.8199L1.80273 11.8199L1.80273 13.5854Z" fill="white" />
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.bottom_heading != blank -%}
+    <div class="gift-guide-banner__bottom-heading">
+      <p>{{ section.settings.bottom_heading }}</p>
+    </div>
+  {%- endif -%}
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.gift-guide-banner__announcement-bar-hamburger .hamburger');
+    const close = document.querySelector('.gift-guide-banner__announcement-bar-hamburger .close');
+    const mobileContent = document.querySelector('.gift-guide-banner__mobile_content');
+
+    hamburger.addEventListener('click', function () {
+      mobileContent.classList.add('active');
+      hamburger.style.display = 'none';
+      close.style.display = 'block';
+    });
+
+    close.addEventListener('click', function () {
+      mobileContent.classList.remove('active');
+      hamburger.style.display = 'block';
+      close.style.display = 'none';
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Gift Guide Banner Widget",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Hearder Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_bar",
+      "label": "Show Top Hearder Bar",
+      "default": true,
+      "info": "Show the top bar with the text and button"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_bar_logo",
+      "label": "Logo",
+      "info": "The logo to display in the top bar"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_text",
+      "label": "Text",
+      "default": "Find the ideal gift for your loved ones.",
+      "info": "The text to display in the top bar"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_button_text",
+      "label": "Button Text",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "top_bar_button_link",
+      "label": "Button Link",
+      "info": "The link to the button"
+    },
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "The image to display in the banner"
+    },
+    {
+      "type": "header",
+      "content": "Banner Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gift Guide",
+      "info": "The heading to display in the banner"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+      "info": "The subheading to display in the banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW",
+      "info": "The text to display in the banner button"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_link",
+      "label": "Button Link",
+      "info": "The link to the banner button"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Heading"
+    },
+    {
+      "type": "text",
+      "id": "bottom_heading",
+      "label": "Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR",
+      "info": "The text to display in the bottom heading"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0,
+      "info": "The padding top to display in the section"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 46,
+      "info": "The padding bottom to display in the section"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift Guide Banner Widget",
+      "settings": {
+        "show_top_bar": true,
+        "top_bar_text": "Find the ideal gift for your loved ones.",
+        "top_bar_button_text": "CHOOSE GIFT",
+        "top_bar_button_link": "/collections/all",
+        "heading": "The Gift Guide",
+        "subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "banner_button_text": "SHOP NOW",
+        "banner_button_link": "/collections/all",
+        "bottom_heading": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  ]
+}
+{% endschema %}
