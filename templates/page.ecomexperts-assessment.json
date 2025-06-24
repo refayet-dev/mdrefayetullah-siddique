@@ -83,6 +83,15 @@
             "icon_horizontal_position": 50,
             "icon_vertical_position": 27
           }
+        },
+        "product_item_KtAXtW": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/young-female-models-denim_925x_44c2cf9e-4030-4347-9d4a-f0e4a1479b4a.jpg",
+            "product": "dark-denim-top",
+            "icon_horizontal_position": 68,
+            "icon_vertical_position": 44
+          }
         }
       },
       "block_order": [
@@ -90,7 +99,8 @@
         "product_item_mhEtGe",
         "product_item_BRjW8V",
         "product_item_BMQ8YY",
-        "product_item_YAErK9"
+        "product_item_YAErK9",
+        "product_item_KtAXtW"
       ],
       "name": "Lookbook grid",
       "settings": {
