@@ -16,9 +16,104 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "gift_guide_banner_component_ULk9Jk": {
+      "type": "gift-guide-banner-component",
+      "name": "Gift Guide Banner Widget",
+      "settings": {
+        "show_top_bar": true,
+        "top_bar_logo": "shopify://shop_images/Top_Bar_Logo.svg",
+        "top_bar_text": "Find the ideal gift for your loved ones.",
+        "top_bar_button_text": "CHOOSE GIFT",
+        "top_bar_button_link": "/collections/all",
+        "image": "shopify://shop_images/banner_image.svg",
+        "heading": "The Gift Guide",
+        "subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "banner_button_text": "SHOP NOW",
+        "banner_button_link": "/collections/all",
+        "bottom_heading": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "product_grid_with_popup_9DxGyB": {
+      "type": "product-grid-with-popup",
+      "blocks": {
+        "product_item_mFaNam": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/black-bag-over-the-shoulder_925x_4cae5708-5e9e-4e7e-96ec-9649f0c20cd8.jpg",
+            "product": "black-leather-bag",
+            "icon_horizontal_position": 58,
+            "icon_vertical_position": 60
+          }
+        },
+        "product_item_mhEtGe": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/man-adjusts-blue-tuxedo-bowtie_925x_55a49e12-d54b-488e-b7a0-ea4c201eb01f.jpg",
+            "product": "blue-silk-tuxedo",
+            "icon_horizontal_position": 73,
+            "icon_vertical_position": 52
+          }
+        },
+        "product_item_BRjW8V": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/red-plaid-shirt_925x_70e9e5a8-8fc5-4d60-9a9a-cc2e0dd57cc9.jpg",
+            "product": "chequered-red-shirt",
+            "icon_horizontal_position": 59,
+            "icon_vertical_position": 20
+          }
+        },
+        "product_item_BMQ8YY": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/leather-jacket-and-tea_925x_2490cde1-7e61-4151-9a65-de8a763bc701.jpg",
+            "product": "classic-leather-jacket",
+            "icon_horizontal_position": 65,
+            "icon_vertical_position": 20
+          }
+        },
+        "product_item_YAErK9": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/casual-fashion-woman_925x_56b56608-f207-45c1-b677-bb5aa26c1c7a.jpg",
+            "product": "classic-varsity-top",
+            "icon_horizontal_position": 50,
+            "icon_vertical_position": 27
+          }
+        },
+        "product_item_KtAXtW": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/young-female-models-denim_925x_44c2cf9e-4030-4347-9d4a-f0e4a1479b4a.jpg",
+            "product": "dark-denim-top",
+            "icon_horizontal_position": 68,
+            "icon_vertical_position": 44
+          }
+        }
+      },
+      "block_order": [
+        "product_item_mFaNam",
+        "product_item_mhEtGe",
+        "product_item_BRjW8V",
+        "product_item_BMQ8YY",
+        "product_item_YAErK9",
+        "product_item_KtAXtW"
+      ],
+      "name": "Lookbook grid",
+      "settings": {
+        "title": "TISSO VISON in the wild",
+        "bonus_product": "dark-winter-jacket",
+        "padding_top": 54,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "gift_guide_banner_component_ULk9Jk",
+    "product_grid_with_popup_9DxGyB"
   ]
 }
